@@ -1,0 +1,59 @@
+<h1>
+	Leader Board
+</h1>
+
+<table class="table table-striped table-hover ">
+	<thead>
+		<tr>
+			<th>
+				Genre Name
+			</th>
+			<th>
+				Sub Genre Name
+			</th>
+			<th>
+				Score
+			</th>
+			<th>
+				User Name
+			</th>
+		</tr>
+	</thead>
+<% @leaders.each do |i|%>
+	<% if @genreName == i.genreName %>
+	<tbody>
+	<% if i.userId == cur_user.id %>
+		<tr class="success">
+			<th>
+				<%= i.genreName %>
+			</th>
+			<th>
+				<%= i.subgenreName %>
+			</th>
+			<th>
+				<%= i.score %>
+			</th>
+			<th>
+				<%= User.find_by_id(i.userId).name %>
+			</th>
+		</tr>
+	<% else %>
+		<tr>
+			<th>
+				<%= i.genreName %>
+			</th>
+			<th>
+				<%= i.subgenreName %>
+			</th>
+			<th>
+				<%= i.score %>
+			</th>
+			<th>
+				<%= User.find_by_id(i.userId).name %>
+			</th>
+		</tr>
+	<% end %>
+	</tbody>
+	<% end %>
+<% end %>
+</table>

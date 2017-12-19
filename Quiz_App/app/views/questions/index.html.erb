@@ -1,0 +1,72 @@
+<% if cur_user.admin_mode %><br/>
+	You are in ADMIN MODE<br/>
+	<h1>
+		All Questions of genre <%= @genreName %> and sub genre <%= @subgenreName %> 
+	</h1>
+	<table class="table table-striped table-hover ">
+		<thead>
+		<tr>
+			<th>
+				Genre Name
+			</th>
+			<th>
+				Sub Genre Name
+			</th>
+			<th>
+				Question
+			</th>
+			<th>
+				Option A
+			</th>
+			<th>
+				Option B
+			</th>
+			<th>
+				Option C
+			</th>
+			<th>
+				Option D
+			</th>
+			<th>
+				Answer
+			</th>
+		</tr>
+		</thead>
+	<% @questions.each do |q| %>
+		<tbody>
+		<tr>
+			<td>
+				<%= q.genreName %>
+			</td>
+			<td>
+				<%= q.subgenreName %>
+			</td>
+			<td>
+				<%= q.content%>
+			</td>
+			<td>
+				<%= q.A%>
+			</td>
+			<td>
+				<%= q.B%>
+			</td>
+			<td>
+				<%= q.C%>
+			</td>
+			<td>
+				<%= q.D%>
+			</td>
+			<td>
+				<%= q.answer%>
+			</td>
+			<td>
+				<%= link_to 'delete',q, method: :delete, data: { confirm: 'Are you sure?'} %>
+			</td>
+		</tr>
+		</tbody>
+	<% end %>
+	</table>
+	
+	<% else %>
+		<p style="color:red">Access Denied</p>
+	<% end %>

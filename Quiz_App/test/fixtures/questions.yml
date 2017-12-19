@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  genreName: MyString
+  subgenreName: MyString
+  quizId: 1
+  A: MyString
+  B: MyString
+  C: MyString
+  D: MyString
+  answer: MyString
+
+two:
+  genreName: MyString
+  subgenreName: MyString
+  quizId: 1
+  A: MyString
+  B: MyString
+  C: MyString
+  D: MyString
+  answer: MyString

@@ -1,0 +1,35 @@
+<h1>
+	Quiz
+</h1>
+
+Score :<%= @w.score %>
+ 	<%= form_for(:@question, :url => "/play/update") do |f| %>
+ 	
+      	<h2>
+      		Question
+      	</h2>
+      	<%= @q.content %><br/>
+
+      <%= check_box_tag 'ans[]', 'A' %>
+      <%= @q.A %><br/>
+
+      <%= check_box_tag 'ans[]', 'B' %>
+      <%= @q.B %><br/>
+
+      <%= check_box_tag 'ans[]', 'C' %>
+      <%= @q.C %><br/>
+
+      <%= check_box_tag 'ans[]', 'D' %>
+      <%= @q.D %><br/>
+      <input type="hidden" name="qid" value="<%= @q.id %>">
+      <% if @sec %>
+      	<input type="hidden" name="secid" value="<%= @sec.lastquesId %>">
+      <% end %>
+      <input type="hidden" name="Answer" value="<%= @q.answer %>">
+      <input type="hidden" name="Score" value="<%= @w.score %>">
+      <input type="hidden" name="genreName" value="<%= @genreName %>">
+      <input type="hidden" name="subgenreName" value="<%= @subgenreName %>">
+
+
+      <%= f.submit "Submit Answer", class: "btn btn-primary" %>
+    <% end %>

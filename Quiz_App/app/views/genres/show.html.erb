@@ -1,0 +1,73 @@
+<% if !cur_user.admin_mode %>
+<p>
+	<h1>Name: </h1>
+	<%= cur_user.name %>
+</p>
+
+<p>
+	<h1>Email:</h1>
+	<%= cur_user.email %>
+</p>
+
+<h1>
+	Unattempted Quizzes:
+</h1>
+	<table class="table table-striped table-hover ">
+		<thead>
+		<tr>
+			<th>Sub_Genre_Name</th>
+			<th>Link_To_Quizzes</th>
+			<th>Leader Board</th>
+		</tr>
+		</thead>
+		<% @subgenres.each do |i| %>
+			<tbody>
+			<tr>
+				<td><%= i.subgenreName %></td>
+				<td><%= link_to 'Play Quiz',play_path(:genreName => params[:genreName] , :subgenreName => i.subgenreName) ,method: :get %></td>
+				<td><%= link_to 'LeaderBoard', genres_leaderboard_path(:genreName => params[:genreName] , :subgenreName => i.subgenreName) ,method: :get %></td>
+			</tr>
+			</tbody>
+		<% end %>
+	</table>
+
+<h1>
+	Attempted Quizzes:
+</h1>
+	<table class="table table-striped table-hover ">
+		<thead>
+		<tr>
+			<th>Sub_Genre_Name</th>
+			<th>Leader Board</th>
+		</tr>
+		</thead>
+		<% @asubgenres.each do |i| %>
+			<tbody>
+			<tr>
+				<td><%= i.subgenreName %></td>
+				<td><%= link_to 'LeaderBoard', genres_leaderboard_path(:genreName => params[:genreName] , :subgenreName => i.subgenreName) ,method: :get %></td>
+			</tr>
+			</tbody>
+		<% end %>
+	</table>
+
+<% else %>
+	<table class="table table-striped table-hover ">
+		<thead>
+		<tr>
+			<th>Sub_Genre_Name</th>
+			<th>Link_To_Quizzes_Questions</th>
+			<th>Leader Board</th>
+		</tr>
+		</thead>
+		<% @subgenres.each do |i| %>
+			<tbody>
+			<tr>
+				<td><%= i.subgenreName %></td>
+				<td><%= link_to 'Questions', questions_path(:genreName => params[:genreName] , :subgenreName => i.subgenreName) ,method: :get %></td>
+				<td><%= link_to 'LeaderBoard', genres_leaderboard_path(:genreName => params[:genreName] , :subgenreName => i.subgenreName) ,method: :get %></td>
+			</tr>
+			</tbody>
+		<% end %>
+	</table>
+<% end %>

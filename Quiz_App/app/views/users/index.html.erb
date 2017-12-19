@@ -1,0 +1,74 @@
+<% if cur_user.admin_mode %><br/>
+	You are in ADMIN MODE<br/>
+	<h1>
+		All Users
+	</h1>
+	<table class="table table-striped table-hover ">
+		<thead>
+		<tr>
+			<th>
+				Name
+			</th>
+			<th>
+				Email
+			</th>
+			<th>
+				Delete
+			</th>
+			<th>
+				Show
+			</th>
+			<th>
+				Edit
+			</th>
+		</tr>
+		</thead>
+	<% @users.each do |user| %>
+		<tbody>
+		<tr>
+			<td>
+				<%= user.name %>
+			</td>
+			<td>
+				<%= user.email %>
+			</td>
+			<td>
+				<%= link_to 'delete',user_path(:id => user.id), method: :delete, data: { confirm: 'Are you sure?'} %>
+			</td>
+			<td>
+				<%= link_to 'show',user, method: :get %>
+			</td>
+			<td>
+				<%= link_to 'edit',edit_user_path(:id => user.id), method: :get %>
+			</td>
+		</tr>
+		</tbody>
+	<% end %>
+	</table>
+	
+	<h1>Quizzes:</h1>
+	<table class="table table-striped table-hover ">
+		<thead>
+		<tr>
+			<th>Genre Name</th>
+			<th>Link To Subgenre</th>
+			<th>Leader Board</th>
+			<th>Delete</th>
+		</tr>
+		</thead>
+		<% @genres.each do |i| %>
+			<tbody>
+			<tr>
+				<td><%= i.genreName %></td>
+				<td><%= link_to "Go to subgenre",genre_path(:id => i.genreId , :genreName => i.genreName), method: :get %></td>
+				<td><%= link_to "LeaderBoard",users_leaderboard_path(:genreName => i.genreName), method: :get %></td>
+				<td><%= link_to "Delete", i, method: :delete, data: { confirm: "You sure?" } %></td>
+			</tr>
+			</tbody>
+		<% end %>
+		
+	</table>
+	
+	<% else %>
+		<p style="color:red">Access Denied</p>
+	<% end %>

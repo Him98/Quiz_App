@@ -1,0 +1,26 @@
+<% if cur_user.admin_mode %>
+
+<h1>Edit User's Profile</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @user do |f| %>
+      <%= f.label :name %><br/>
+      <%= f.text_field :name %><br/>
+
+      <%= f.label :email %><br/>
+      <%= f.email_field :email %><br/>
+
+      <%= f.label :password %><br/>
+      <%= f.password_field :password %><br/>
+
+      <%= f.label :password_confirmation, "Confirmation" %><br/>
+      <%= f.password_field :password_confirmation %><br/>
+
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+      <%= link_to "Cancel", "/users"%>
+      <input type="hidden" name="id" value="<%= @user.id %>">
+    <% end %>
+  </div>
+</div>
+<% end %>

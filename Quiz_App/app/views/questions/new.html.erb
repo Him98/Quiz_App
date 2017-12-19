@@ -1,0 +1,35 @@
+<%# if @cur_user.admin_mode %>
+
+	<h1>Add Questions</h1>
+	<div class="row">
+  	<div class="col-md-6 col-md-offset-3">
+    <%= form_for(:question, :url => "/questions/create") do |f| %>
+      	<%= f.label :GenreName %><br/>
+      	<%= f.text_field :genreName %><br/>
+
+      	<%= f.label :SubgenreName %><br/>
+      	<%= f.text_field :subgenreName %><br/>
+
+      	<%= f.label :Content %><br/>
+      	<%= f.text_field :content %><br/>
+
+      	<%= f.label :A %><br/>
+      	<%= f.text_field :A %><br/>
+
+      	<%= f.label :B %><br/>
+      	<%= f.text_field :B %><br/>
+
+      	<%= f.label :C %><br/>
+      	<%= f.text_field :C %><br/>
+
+      	<%= f.label :D %><br/>
+      	<%= f.text_field :D %><br/>
+
+      	<%= f.label :Answer %><br/>
+      	<%= f.text_field :answer %><br/>
+      	
+      	<%= f.submit "Create a question", class: "btn btn-primary" %>
+    <% end %>
+  	</div>
+
+<%# end %>

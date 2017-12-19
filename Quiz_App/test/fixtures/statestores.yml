@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  genreName: MyString
+  subgenreName: MyString
+  lastquesId: 1
+
+two:
+  genreName: MyString
+  subgenreName: MyString
+  lastquesId: 1

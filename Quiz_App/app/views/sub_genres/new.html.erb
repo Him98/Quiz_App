@@ -1,0 +1,18 @@
+<% if cur_user.admin_mode %>
+	<div class="row">
+  	<div class="col-md-6 col-md-offset-3">
+    <%= form_for(:subgenre, :url => "/sub_genres/create") do |f| %>
+      
+      <%= f.label :genreName %><br/>
+      <%= f.text_field :genreName %><br/>
+
+      <%= f.label :subgenreName %><br/>
+      <%= f.text_field :subgenreName %><br/>
+
+      <%= f.submit "Create a subgenre", class: "btn btn-primary" %>
+    <% end %>
+  	</div>
+	</div>
+<% else %>
+	flash[:error]="Access Denied"
+<% end %>
